@@ -10,8 +10,11 @@ function About() {
             About the Project
           </h2>
           <p className="text-base sm:text-lg text-[#314473]/90">
-            An academic deepfake image detection demo built with Xception +
-            transfer learning. Designed to be privacy-first and easy to try.
+            This project presents a transfer learning–based deep learning system
+            for detecting AI-generated (synthetic) faces using the Xception
+            architecture. As generative models become increasingly realistic,
+            robust detection tools are essential to combat misinformation,
+            identity misuse, and digital manipulation.
           </p>
         </div>
 
@@ -30,11 +33,22 @@ function About() {
                 increasingly important for platforms and end users.
               </p>
               <p>
-                This project explores whether a transfer-learning approach using
-                the Xception architecture can accurately classify real vs fake
-                face images under realistic conditions.
+                The Xception model was fully fine-tuned on a balanced dataset of
+                real and synthetic faces and evaluated on a held-out test set of
+                1,205 images.
               </p>
-              <p className="text-sm text-[#314473]/80">
+              <div>
+                <h3 className="text-xl font-semibold mb-2">
+                  Performance Highlights
+                </h3>
+
+                <ul className="list-disc list-inside space-y-1">
+                  <li>89.88% test accuracy</li>
+                  <li>F1-score: 0.90</li>
+                  <li>Evaluated on 1,205 unseen test images</li>
+                </ul>
+              </div>
+              <p className="text-sm text-[#314473">
                 Note: Predictions are probabilistic and may be wrong on
                 low-quality images, heavy compression, or unseen manipulation
                 techniques.
@@ -86,8 +100,8 @@ function About() {
                   <h4 className="font-semibold">Research</h4>
                 </div>
                 <p className="text-sm text-[#314473]/80">
-                  Built as part of an academic workflow with evaluation and
-                  reporting.
+                  Academic research with documented methodology and evaluation
+                  metrics.
                 </p>
               </div>
             </div>

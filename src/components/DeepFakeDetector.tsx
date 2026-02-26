@@ -86,7 +86,7 @@ function DeepFakeDetector() {
   return (
     <div
       id="detector"
-      className="min-h-screen bg-[#FBF9FE] px-4 py-10 sm:px-6 md:px-8 pt-16"
+      className="min-h-screen bg-[#FBF9FE] px-4 py-10 sm:px-6 md:px-8 scroll-mt-32"
     >
       {/* Title */}
       <div className="flex flex-col items-center mb-10 md:mb-12 space-y-3 md:space-y-4 text-center">

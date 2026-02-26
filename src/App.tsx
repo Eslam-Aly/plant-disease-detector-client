@@ -6,12 +6,14 @@ import Footer from "./components/Footer";
 import Main from "./components/Main";
 import RealFakeGame from "./components/RealFakeGame";
 import DeepFakeDetector from "./components/DeepFakeDetector";
+import ScrollToTop from "./components/ScrollToTop";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
 
       <Routes>

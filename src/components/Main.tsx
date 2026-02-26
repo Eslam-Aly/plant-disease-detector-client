@@ -27,9 +27,15 @@ function Main() {
               <p className="text-base sm:text-lg text-[#314473]">
                 Upload an image and get a prediction with a confidence score.
               </p>
-              <p className="text-sm text-[#314473]/80">
-                Built with React + TypeScript + Xception
-              </p>
+              <a
+                href="https://sciforum.net/paper/view/27925"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#314473]/80 hover:text-[#314473] transition-colors"
+              >
+                This project is part of an academic research workflow. Read the
+                full paper on Sciforum →
+              </a>
             </div>
 
             {/* Bullets */}
@@ -41,12 +47,18 @@ function Main() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <button className="w-full sm:w-auto px-5 py-3 bg-[#314473] text-[#EBEEF7] rounded-md hover:bg-[#25365E] hover:scale-[1.02] transition-all">
+              <a
+                href="#detector"
+                className="w-full sm:w-auto px-5 py-3 bg-[#314473] text-[#EBEEF7] rounded-md hover:bg-[#25365E] hover:scale-[1.02] transition-all text-center"
+              >
                 Try it now
-              </button>
-              <button className="w-full sm:w-auto px-5 py-3 bg-[#EBEEF7] text-[#314473] rounded-md hover:bg-slate-100 hover:scale-[1.02] transition-all border border-[#314473]">
+              </a>
+              <a
+                href="/pages/about"
+                className="w-full sm:w-auto px-5 py-3 bg-[#EBEEF7] text-[#314473] rounded-md hover:bg-slate-100 hover:scale-[1.02] transition-all border border-[#314473] text-center"
+              >
                 How it works
-              </button>
+              </a>
             </div>
           </div>
         </div>

@@ -16,6 +16,10 @@ function Header() {
   }, []);
 
   const closeMenu = () => setIsMenuOpen(false);
+  const handleNavClick = () => {
+    closeMenu();
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  };
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#314473] shadow-md">
@@ -24,7 +28,7 @@ function Header() {
         <Link
           to="/"
           className="flex items-center gap-2"
-          onClick={closeMenu}
+          onClick={handleNavClick}
           aria-label="Go to Home"
         >
           <img
@@ -38,18 +42,21 @@ function Header() {
         <nav className="hidden md:flex items-center space-x-6 text-base lg:text-lg font-medium">
           <Link
             to="/"
+            onClick={handleNavClick}
             className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
           >
             Home
           </Link>
           <Link
             to="/pages/about"
+            onClick={handleNavClick}
             className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
           >
             About
           </Link>
           <Link
             to="/pages/contact"
+            onClick={handleNavClick}
             className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
           >
             Contact
@@ -79,21 +86,21 @@ function Header() {
         <nav className="container mx-auto flex flex-col px-4 sm:px-6 py-3 text-base font-medium justify-center items-center space-y-2 text-[#EBEEF7]">
           <Link
             to="/"
-            onClick={closeMenu}
+            onClick={handleNavClick}
             className="py-2 hover:text-blue-400 transition"
           >
             Home
           </Link>
           <Link
             to="/pages/about"
-            onClick={closeMenu}
+            onClick={handleNavClick}
             className="py-2 hover:text-blue-400 transition"
           >
             About
           </Link>
           <Link
             to="/pages/contact"
-            onClick={closeMenu}
+            onClick={handleNavClick}
             className="py-2 hover:text-blue-400 transition"
           >
             Contact
