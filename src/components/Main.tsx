@@ -1,4 +1,5 @@
 import heroImg from "../assets/backgroundHero.jpg";
+import { Link } from "react-router-dom";
 
 function Main() {
   return (
@@ -53,12 +54,12 @@ function Main() {
               >
                 Try it now
               </a>
-              <a
-                href="/pages/about"
+              <Link
+                to="/pages/about"
                 className="w-full sm:w-auto px-5 py-3 bg-[#EBEEF7] text-[#314473] rounded-md hover:bg-slate-100 hover:scale-[1.02] transition-all border border-[#314473] text-center"
               >
                 How it works
-              </a>
+              </Link>
             </div>
           </div>
         </div>
