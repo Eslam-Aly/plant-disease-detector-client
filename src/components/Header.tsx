@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import fakeFaceImage from "../assets/fake-face-detector-high-resolution-logo-transparent-2.png";
+import plantLogo from "../assets/plantLogo.png";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -22,8 +22,8 @@ function Header() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#314473] shadow-md">
-      <div className="container mx-auto flex items-center justify-between py-3 px-4 sm:px-6 text-[#EBEEF7]">
+    <header className="fixed top-0 w-full z-50 bg-slate-50 shadow-md">
+      <div className="container mx-auto flex items-center justify-between py-3 px-4 sm:px-6 text-green-700">
         {/* Logo */}
         <Link
           to="/"
@@ -32,8 +32,8 @@ function Header() {
           aria-label="Go to Home"
         >
           <img
-            className="h-12 sm:h-14 rounded-sm hover:scale-105 transition-all duration-200"
-            src={fakeFaceImage}
+            className="h-12 sm:h-16 rounded-sm hover:scale-105 transition-all duration-200"
+            src={plantLogo}
             alt="Fake Face Detector Logo"
           />
         </Link>
@@ -43,21 +43,21 @@ function Header() {
           <Link
             to="/"
             onClick={handleNavClick}
-            className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
+            className="hover:text-green-600 hover:scale-105 transition-all duration-200"
           >
             Home
           </Link>
           <Link
             to="/pages/about"
             onClick={handleNavClick}
-            className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
+            className="hover:text-green-600 hover:scale-105 transition-all duration-200"
           >
             About
           </Link>
           <Link
             to="/pages/contact"
             onClick={handleNavClick}
-            className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
+            className="hover:text-green-600 hover:scale-105 transition-all duration-200"
           >
             Contact
           </Link>
@@ -79,29 +79,29 @@ function Header() {
       {/* Mobile dropdown */}
       <div
         id="mobile-menu"
-        className={`md:hidden overflow-hidden border-t border-white/10 bg-[#314473] transition-[max-height,opacity] duration-200 ${
+        className={`md:hidden overflow-hidden border-t border-white/10 bg-green-900 transition-[max-height,opacity] duration-200 ${
           isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="container mx-auto flex flex-col px-4 sm:px-6 py-3 text-base font-medium justify-center items-center space-y-2 text-[#EBEEF7]">
+        <nav className="container mx-auto flex flex-col px-4 sm:px-6 py-3 text-base font-medium justify-center items-center space-y-2 text-green-500">
           <Link
             to="/"
             onClick={handleNavClick}
-            className="py-2 hover:text-blue-400 transition"
+            className="py-2 hover:text-green-400 transition"
           >
             Home
           </Link>
           <Link
             to="/pages/about"
             onClick={handleNavClick}
-            className="py-2 hover:text-blue-400 transition"
+            className="py-2 hover:text-green-400 transition"
           >
             About
           </Link>
           <Link
             to="/pages/contact"
             onClick={handleNavClick}
-            className="py-2 hover:text-blue-400 transition"
+            className="py-2 hover:text-green-400 transition"
           >
             Contact
           </Link>

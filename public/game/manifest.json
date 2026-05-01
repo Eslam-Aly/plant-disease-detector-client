@@ -1,0 +1,205 @@
+[
+  {
+    "id": 1,
+    "image": "/game/images/accept1.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.88,
+    "uncertainty": 0.16,
+    "explanationSupport": "strong",
+    "correctAction": "accept",
+    "explanation": "High confidence, low uncertainty, and strong explanation support make this case safe to accept."
+  },
+  {
+    "id": 2,
+    "image": "/game/images/accept2.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.85,
+    "uncertainty": 0.19,
+    "explanationSupport": "strong",
+    "correctAction": "accept",
+    "explanation": "The image is clear, the model is confident, and the explanation support is strong enough for acceptance."
+  },
+  {
+    "id": 3,
+    "image": "/game/images/accept3.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.82,
+    "uncertainty": 0.21,
+    "explanationSupport": "strong",
+    "correctAction": "accept",
+    "explanation": "This case shows strong evidence for a reliable decision, so accepting the output is appropriate."
+  },
+  {
+    "id": 4,
+    "image": "/game/images/accept4.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.86,
+    "uncertainty": 0.17,
+    "explanationSupport": "strong",
+    "correctAction": "accept",
+    "explanation": "The model output is stable and well supported, making this case suitable for acceptance."
+  },
+  {
+    "id": 5,
+    "image": "/game/images/accept5.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.84,
+    "uncertainty": 0.18,
+    "explanationSupport": "strong",
+    "correctAction": "accept",
+    "explanation": "This image provides a confident and visually supported prediction, so the safest action is accept."
+  },
+
+  {
+    "id": 6,
+    "image": "/game/images/monitor1.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.67,
+    "uncertainty": 0.31,
+    "explanationSupport": "moderate",
+    "correctAction": "monitor",
+    "explanation": "The prediction is plausible, but the case is not strong enough for automatic acceptance."
+  },
+  {
+    "id": 7,
+    "image": "/game/images/monitor2.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.64,
+    "uncertainty": 0.34,
+    "explanationSupport": "moderate",
+    "correctAction": "monitor",
+    "explanation": "This case has usable signal, but some uncertainty remains, so monitoring is safer than acceptance."
+  },
+  {
+    "id": 8,
+    "image": "/game/images/monitor3.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.69,
+    "uncertainty": 0.29,
+    "explanationSupport": "moderate",
+    "correctAction": "monitor",
+    "explanation": "The model output is reasonable, but the evidence is only moderately reliable, so monitoring is recommended."
+  },
+  {
+    "id": 9,
+    "image": "/game/images/monitor4.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.66,
+    "uncertainty": 0.32,
+    "explanationSupport": "moderate",
+    "correctAction": "monitor",
+    "explanation": "The system sees a likely disease signal, but the case should still be monitored rather than fully accepted."
+  },
+  {
+    "id": 10,
+    "image": "/game/images/monitor5.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.62,
+    "uncertainty": 0.36,
+    "explanationSupport": "moderate",
+    "correctAction": "monitor",
+    "explanation": "The prediction is not weak, but uncertainty is still noticeable, so monitor is the safer action."
+  },
+
+  {
+    "id": 11,
+    "image": "/game/images/retake1.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.54,
+    "uncertainty": 0.46,
+    "explanationSupport": "moderate",
+    "correctAction": "retake",
+    "explanation": "The case may still contain useful signal, but the image should be retaken before acting on the prediction."
+  },
+  {
+    "id": 12,
+    "image": "/game/images/retake2.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.57,
+    "uncertainty": 0.43,
+    "explanationSupport": "moderate",
+    "correctAction": "retake",
+    "explanation": "The model sees a possible disease pattern, but a clearer image is needed to support a safer decision."
+  },
+  {
+    "id": 13,
+    "image": "/game/images/retake3.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.51,
+    "uncertainty": 0.48,
+    "explanationSupport": "moderate",
+    "correctAction": "retake",
+    "explanation": "This image may be recoverable with better quality, so the best next step is to retake it."
+  },
+  {
+    "id": 14,
+    "image": "/game/images/retake4.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.55,
+    "uncertainty": 0.45,
+    "explanationSupport": "moderate",
+    "correctAction": "retake",
+    "explanation": "The prediction is not fully unreliable, but the image conditions suggest retaking before trusting the result."
+  },
+  {
+    "id": 15,
+    "image": "/game/images/retake5.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.53,
+    "uncertainty": 0.47,
+    "explanationSupport": "moderate",
+    "correctAction": "retake",
+    "explanation": "A clearer image could improve the decision, so retake is safer than accepting or monitoring this case."
+  },
+
+  {
+    "id": 16,
+    "image": "/game/images/review1.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.38,
+    "uncertainty": 0.62,
+    "explanationSupport": "weak",
+    "correctAction": "review",
+    "explanation": "Low confidence, high uncertainty, and weak explanation support make this case unsuitable for automated action."
+  },
+  {
+    "id": 17,
+    "image": "/game/images/review2.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.35,
+    "uncertainty": 0.66,
+    "explanationSupport": "weak",
+    "correctAction": "review",
+    "explanation": "The output is too unreliable to trust, so the safest decision is expert review."
+  },
+  {
+    "id": 18,
+    "image": "/game/images/review3.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.41,
+    "uncertainty": 0.58,
+    "explanationSupport": "weak",
+    "correctAction": "review",
+    "explanation": "The model is too uncertain and the visual support is weak, so this case should be reviewed by an expert."
+  },
+  {
+    "id": 19,
+    "image": "/game/images/review4.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.37,
+    "uncertainty": 0.64,
+    "explanationSupport": "weak",
+    "correctAction": "review",
+    "explanation": "This case does not provide enough reliable evidence for automated action, so review is the safest option."
+  },
+  {
+    "id": 20,
+    "image": "/game/images/review5.jpg",
+    "predictedDisease": "Diseased Leaf",
+    "confidence": 0.4,
+    "uncertainty": 0.6,
+    "explanationSupport": "weak",
+    "correctAction": "review",
+    "explanation": "The image appears too ambiguous for a safe automated decision, so it should be sent for review."
+  }
+]

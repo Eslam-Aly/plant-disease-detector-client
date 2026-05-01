@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
-import RealFakeGame from "./components/RealFakeGame";
-import DeepFakeDetector from "./components/DeepFakeDetector";
+import SafeActionGame from "./components/SafeActionGame";
+import PlantDiseaseDetector from "./components/PlantDiseaseDetector";
 import ScrollToTop from "./components/ScrollToTop";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
@@ -23,8 +23,8 @@ function App() {
           element={
             <>
               <Main />
-              <RealFakeGame />
-              <DeepFakeDetector />
+              <SafeActionGame />
+              <PlantDiseaseDetector />
             </>
           }
         />
