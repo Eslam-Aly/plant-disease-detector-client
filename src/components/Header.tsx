@@ -48,6 +48,13 @@ function Header() {
             Home
           </Link>
           <Link
+            to="/study"
+            onClick={handleNavClick}
+            className="hover:text-green-600 hover:scale-105 transition-all duration-200"
+          >
+            User Study
+          </Link>
+          <Link
             to="/pages/about"
             onClick={handleNavClick}
             className="hover:text-green-600 hover:scale-105 transition-all duration-200"
@@ -90,6 +97,13 @@ function Header() {
             className="py-2 hover:text-green-400 transition"
           >
             Home
+          </Link>
+          <Link
+            to="/study"
+            onClick={handleNavClick}
+            className="py-2 hover:text-green-400 transition"
+          >
+            User Study
           </Link>
           <Link
             to="/pages/about"

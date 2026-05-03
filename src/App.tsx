@@ -9,6 +9,11 @@ import PlantDiseaseDetector from "./components/PlantDiseaseDetector";
 import ScrollToTop from "./components/ScrollToTop";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import StudyIntro from "./study/pages/StudyIntro";
+import StudyInstructions from "./study/pages/StudyInstructions";
+import StudyCase from "./study/pages/StudyCase";
+import StudyFinal from "./study/pages/StudyFinal";
+import StudyThanks from "./study/pages/StudyThanks";
 
 function App() {
   return (
@@ -32,6 +37,13 @@ function App() {
         {/* Separate pages */}
         <Route path="/pages/about" element={<About />} />
         <Route path="/pages/contact" element={<Contact />} />
+
+        {/* Study pages */}
+        <Route path="/study" element={<StudyIntro />} />
+        <Route path="/study/instructions" element={<StudyInstructions />} />
+        <Route path="/study/case/:id" element={<StudyCase />} />
+        <Route path="/study/final" element={<StudyFinal />} />
+        <Route path="/study/thanks" element={<StudyThanks />} />
       </Routes>
 
       <Footer />

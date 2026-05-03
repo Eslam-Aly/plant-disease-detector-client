@@ -1,61 +1,102 @@
+export type Recommendation = "ACCEPT" | "MONITOR" | "RETAKE" | "REVIEW";
+export type ExplanationSupport = "strong" | "moderate" | "weak";
+
 export type PredictionResponse = {
-  label: "REAL" | "FAKE";
+  label: string;
   confidence: number;
-  probability_real: number;
+  uncertainty: number;
+  recommendation: Recommendation;
+  explanation_support: ExplanationSupport;
+  gradcam_base64?: string | null;
 };
 
-const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
-const apiPredictPath = import.meta.env.VITE_API_PREDICT_PATH || "/api/predict";
+export type StudyCaseResponsePayload = {
+  participantId: string;
+  orderId: string;
+  caseId: string;
+  interfaceType: "simple" | "full";
+  selectedAction: Recommendation;
+  clarityScore: number;
+  trustScore: number;
+  timestamp: string;
+};
 
-function buildPredictUrl(): string {
-  if (/^https?:\/\//i.test(apiPredictPath)) {
-    return apiPredictPath;
-  }
+export type StudyFinalResponsePayload = {
+  participantId: string;
+  orderId: string;
+  clearerVersion: "simple" | "full" | "no_difference";
+  moreUsefulVersion: "simple" | "full" | "no_difference";
+  saferVersion: "simple" | "full" | "no_difference";
+  reuseScore: number;
+  comment: string;
+  timestamp: string;
+};
 
-  const normalizedPath = apiPredictPath.startsWith("/")
-    ? apiPredictPath
-    : `/${apiPredictPath}`;
+export type StudySubmissionRequest = {
+  participantId: string;
+  orderId: string;
+  caseResponses: StudyCaseResponsePayload[];
+  finalResponse: StudyFinalResponsePayload;
+  submittedAt: string;
+};
 
-  return apiBaseUrl ? `${apiBaseUrl}${normalizedPath}` : normalizedPath;
-}
+export type StudySubmissionResponse = {
+  success: boolean;
+  message: string;
+  total_submissions: number;
+};
 
-function parseApiError(status: number, payload: unknown): string {
-  if (
-    payload &&
-    typeof payload === "object" &&
-    "detail" in payload &&
-    typeof payload.detail === "string"
-  ) {
-    return payload.detail;
-  }
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+const API_PREDICT_PATH =
+  import.meta.env.VITE_API_PREDICT_PATH || "/api/predict";
+const API_STUDY_SUBMIT_PATH = "/api/study/submit";
 
-  return `Request failed with status ${status}.`;
-}
+const buildUrl = () => {
+  if (/^https?:\/\//.test(API_PREDICT_PATH)) return API_PREDICT_PATH;
+  return `${API_BASE_URL}${API_PREDICT_PATH}`;
+};
 
-export async function detectFakeFace(file: File): Promise<PredictionResponse> {
+const buildStudySubmitUrl = () => {
+  if (/^https?:\/\//.test(API_STUDY_SUBMIT_PATH)) return API_STUDY_SUBMIT_PATH;
+  return `${API_BASE_URL}${API_STUDY_SUBMIT_PATH}`;
+};
+
+export async function predictPlantDisease(
+  file: File,
+): Promise<PredictionResponse> {
   const formData = new FormData();
   formData.append("image", file);
 
-  const response = await fetch(buildPredictUrl(), {
+  const response = await fetch(buildUrl(), {
     method: "POST",
     body: formData,
   });
 
-  const payload: unknown = await response.json().catch(() => null);
+  const data = await response.json().catch(() => null);
 
   if (!response.ok) {
-    throw new Error(parseApiError(response.status, payload));
+    throw new Error(data?.detail || "Prediction request failed.");
   }
 
-  if (
-    !payload ||
-    typeof payload !== "object" ||
-    !("label" in payload) ||
-    !("confidence" in payload) ||
-    !("probability_real" in payload)
-  ) {
-    throw new Error("Invalid API response format.");
+  return data as PredictionResponse;
+}
+
+export async function submitStudyResults(
+  payload: StudySubmissionRequest,
+): Promise<StudySubmissionResponse> {
+  const response = await fetch(buildStudySubmitUrl(), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const data = await response.json().catch(() => null);
+
+  if (!response.ok) {
+    throw new Error(data?.detail || "Study submission failed.");
   }
 
-  return payload as PredictionResponse;
+  return data as StudySubmissionResponse;
 }

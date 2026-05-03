@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CgSoftwareUpload } from "react-icons/cg";
 import { FiTrash2 } from "react-icons/fi";
+import { predictPlantDisease } from "../lib/api";
 
 type Recommendation = "ACCEPT" | "MONITOR" | "RETAKE" | "REVIEW";
 
@@ -14,6 +15,7 @@ type ResultState =
       uncertainty: number;
       recommendation: Recommendation;
       explanationSupport: "strong" | "moderate" | "weak";
+      gradcamBase64?: string | null;
     }
   | { status: "error"; message: string };
 
@@ -69,46 +71,25 @@ function DeepFakeDetector() {
 
     setResult({ status: "loading" });
 
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    try {
+      const prediction = await predictPlantDisease(file);
 
-    const placeholderOutputs = [
-      {
-        label: "Tomato Early Blight",
-        confidence: 86,
-        uncertainty: 18,
-        recommendation: "ACCEPT" as Recommendation,
-        explanationSupport: "strong" as const,
-      },
-      {
-        label: "Apple Scab",
-        confidence: 64,
-        uncertainty: 33,
-        recommendation: "MONITOR" as Recommendation,
-        explanationSupport: "moderate" as const,
-      },
-      {
-        label: "Corn Leaf Blight",
-        confidence: 53,
-        uncertainty: 46,
-        recommendation: "RETAKE" as Recommendation,
-        explanationSupport: "moderate" as const,
-      },
-      {
-        label: "Potato Early Blight",
-        confidence: 39,
-        uncertainty: 61,
-        recommendation: "REVIEW" as Recommendation,
-        explanationSupport: "weak" as const,
-      },
-    ];
-
-    const selectedOutput =
-      placeholderOutputs[Math.floor(Math.random() * placeholderOutputs.length)];
-
-    setResult({
-      status: "success",
-      ...selectedOutput,
-    });
+      setResult({
+        status: "success",
+        label: prediction.label,
+        confidence: prediction.confidence,
+        uncertainty: prediction.uncertainty,
+        recommendation: prediction.recommendation,
+        explanationSupport: prediction.explanation_support,
+        gradcamBase64: prediction.gradcam_base64 ?? null,
+      });
+    } catch (error) {
+      setResult({
+        status: "error",
+        message:
+          error instanceof Error ? error.message : "Unexpected error occurred.",
+      });
+    }
   };
 
   return (
@@ -122,8 +103,8 @@ function DeepFakeDetector() {
           Plant Disease Detector
         </h2>
         <p className="text-base sm:text-lg text-green-800/90">
-          Upload a plant leaf image and receive a placeholder disease
-          prediction, uncertainty-aware recommendation, and explanation support.
+          Upload a plant leaf image and receive a disease prediction,
+          uncertainty-aware recommendation, and Grad-CAM explanation.
         </p>
       </div>
 
@@ -185,7 +166,7 @@ function DeepFakeDetector() {
           </div>
 
           <p className="text-sm text-green-800/70 mt-4">
-            JPG/PNG • Max 5MB • Placeholder predictions for prototype UI
+            JPG/PNG • Max 5MB • Connected to the local prediction API
           </p>
         </div>
 
@@ -195,7 +176,7 @@ function DeepFakeDetector() {
 
           {result.status === "idle" && (
             <p className="text-slate-500">
-              Upload a plant image to see the placeholder analysis result
+              Upload a plant image to see the analysis result
             </p>
           )}
 
@@ -234,12 +215,6 @@ function DeepFakeDetector() {
               <p className="text-sm text-slate-600 mb-2">
                 Uncertainty: <strong>{result.uncertainty}%</strong>
               </p>
-              <p className="text-sm text-slate-600 mb-4">
-                Explanation support:{" "}
-                <strong className="capitalize">
-                  {result.explanationSupport}
-                </strong>
-              </p>
 
               <div className="w-full max-w-md bg-slate-200 rounded-full h-3 mb-6">
                 <div
@@ -254,9 +229,9 @@ function DeepFakeDetector() {
                 </p>
                 <p className="text-sm text-slate-600 leading-6">
                   {result.recommendation === "ACCEPT" &&
-                    "This case appears reliable enough for acceptance under the current placeholder logic."}
+                    "This case appears reliable enough for acceptance based on the current confidence and uncertainty signals."}
                   {result.recommendation === "MONITOR" &&
-                    "This case looks plausible, but the result should be monitored instead of fully trusted."}
+                    "This case looks plausible, but it should be monitored instead of fully trusted."}
                   {result.recommendation === "RETAKE" &&
                     "This image may still contain useful signal, but it should be retaken before acting on the result."}
                   {result.recommendation === "REVIEW" &&
@@ -266,20 +241,28 @@ function DeepFakeDetector() {
 
               <div className="w-full max-w-md rounded-xl border border-dashed border-green-200 bg-green-50 p-6 mb-4">
                 <p className="text-sm font-semibold text-green-900 mb-2">
-                  Grad-CAM Placeholder
+                  Grad-CAM Explanation
                 </p>
-                <div className="h-32 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-sm text-slate-400">
-                  Explanation heatmap will appear here later
-                </div>
+
+                {result.gradcamBase64 ? (
+                  <img
+                    src={`data:image/png;base64,${result.gradcamBase64}`}
+                    alt="Grad-CAM explanation"
+                    className="w-full rounded-lg border border-slate-200 bg-white"
+                  />
+                ) : (
+                  <div className="h-32 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-sm text-slate-400">
+                    Grad-CAM could not be generated for this image
+                  </div>
+                )}
               </div>
 
               <p className="text-sm text-slate-500 mb-2">
-                This prototype currently shows placeholder results for UI
-                development.
+                This result is returned by the connected local prediction API.
               </p>
               <p className="text-xs text-slate-400">
-                Future version: CNN prediction + uncertainty + explanation-aware
-                support
+                Model inference, uncertainty estimation, and Grad-CAM are now
+                connected through the local API.
               </p>
             </>
           )}

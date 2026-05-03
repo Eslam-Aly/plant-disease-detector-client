@@ -39,6 +39,7 @@ function Footer() {
           {/* Resources */}
           <div className="flex flex-col space-y-2">
             <h4 className="font-semibold text-lg">Resources</h4>
+            {/*
             <a
               href="https://sciforum.net/paper/view/27925"
               target="_blank"
@@ -47,8 +48,12 @@ function Footer() {
             >
               Research Paper
             </a>
+            */}
+            <Link to="/study" className="hover:text-green-600">
+              User Study
+            </Link>
             <a
-              href="https://github.com/Eslam-Aly/fake-face-detector-client.git"
+              href="https://github.com/Eslam-Aly/plant-disease-detector-client.git"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-green-600"
@@ -56,7 +61,7 @@ function Footer() {
               GitHub (Client)
             </a>
             <a
-              href="https://github.com/Eslam-Aly/fake-face-detector-api.git"
+              href="https://github.com/Eslam-Aly/plant-disease-detector-api.git"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-green-600"
