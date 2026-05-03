@@ -25,7 +25,8 @@ function Main() {
                 Upload a plant leaf image and receive a disease prediction,
                 confidence score, and risk-aware recommendation.
               </p>
-              <a
+              {/*
+               <a
                 href="https://sciforum.net/paper/view/27925"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -35,6 +36,11 @@ function Main() {
                 plant disease diagnosis under real-world conditions. Learn more
                 about the thesis direction →
               </a>
+              */}
+              <p className="text-sm text-green-800/80">
+                This project is part of an academic research workflow for robust
+                plant disease diagnosis under real-world conditions.
+              </p>
             </div>
 
             {/* Bullets */}
