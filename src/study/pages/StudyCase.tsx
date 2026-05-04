@@ -86,7 +86,7 @@ function StudyCase() {
 
   if (!studyCase) {
     return (
-      <section className="min-h-screen bg-gradient-to-b from-green-50 via-white to-slate-50 px-4 py-10 sm:px-6 md:px-8">
+      <section className="min-h-screen bg-gradient-to-b from-green-50 via-white to-slate-50 px-4 py-10 sm:px-6 md:px-8 mt-16">
         <div className="mx-auto flex min-h-[80vh] max-w-3xl items-center justify-center">
           <div className="w-full rounded-2xl border border-green-100 bg-white p-8 text-center shadow-lg sm:p-10">
             <h1 className="text-2xl font-bold text-green-900">
@@ -107,7 +107,7 @@ function StudyCase() {
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-green-50 via-white to-slate-50 px-4 py-8 sm:px-6 md:px-8">
+    <section className="min-h-screen bg-gradient-to-b from-green-50 via-white to-slate-50 px-4 py-8 sm:px-6 md:px-8 mt-16">
       <div className="mx-auto max-w-5xl">
         <div className="mb-6 rounded-2xl border border-green-100 bg-white p-5 shadow-sm sm:p-6">
           <div className="mb-3 flex items-center justify-between gap-4">

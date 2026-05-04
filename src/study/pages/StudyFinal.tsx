@@ -74,7 +74,7 @@ function StudyFinal() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-green-50 via-white to-slate-50 px-4 py-10 sm:px-6 md:px-8">
+    <section className="min-h-screen bg-gradient-to-b from-green-50 via-white to-slate-50 px-4 py-10 sm:px-6 md:px-8 mt-16">
       <div className="mx-auto max-w-3xl">
         <div className="rounded-2xl border border-green-100 bg-white p-8 shadow-lg sm:p-10">
           <div className="mb-8 text-center">

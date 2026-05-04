@@ -29,7 +29,7 @@ function StudyIntro() {
     navigate("/study/instructions");
   };
   return (
-    <section className="min-h-screen bg-gradient-to-b from-green-50 via-white to-slate-50 px-4 py-10 sm:px-6 md:px-8">
+    <section className="min-h-screen bg-gradient-to-b from-green-50 via-white to-slate-50 px-4 py-10 sm:px-6 md:px-8 mt-16">
       <div className="mx-auto flex min-h-[80vh] max-w-3xl items-center justify-center">
         <div className="w-full rounded-2xl border border-green-100 bg-white p-8 shadow-lg sm:p-10">
           <div className="mb-6 text-center">
