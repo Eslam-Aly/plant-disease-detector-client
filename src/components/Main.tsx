@@ -1,4 +1,3 @@
-import heroImg from "../assets/plantBG.png";
 import { Link } from "react-router-dom";
 
 function Main() {
