@@ -166,7 +166,7 @@ function DeepFakeDetector() {
           </div>
 
           <p className="text-sm text-green-800/70 mt-4">
-            JPG/PNG • Max 5MB • Connected to the local prediction API
+            JPG/PNG • Max 5MB • We don’t store uploads
           </p>
         </div>
 

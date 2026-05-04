@@ -49,7 +49,7 @@ export type StudySubmissionResponse = {
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 const API_PREDICT_PATH =
   import.meta.env.VITE_API_PREDICT_PATH || "/api/predict";
-const API_STUDY_SUBMIT_PATH = "/api/study/submit";
+const API_STUDY_SUBMIT_PATH = "/study/submit";
 
 const buildUrl = () => {
   if (/^https?:\/\//.test(API_PREDICT_PATH)) return API_PREDICT_PATH;
